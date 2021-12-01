@@ -1,6 +1,6 @@
 import React from "react";
-import { withRouter } from "react-router";
-import { Link } from "react-router-dom";
+// import { withRouter } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import temperature from "../assets/img/temperature.png";
 import humidity from "../assets/img/humidity.png";
@@ -8,6 +8,14 @@ import sun from "../assets/img/sun.png";
 import visible from "../assets/img/visible.png";
 import dewPoint from "../assets/img/dew-point.png";
 import pressure from "../assets/img/pressure.png";
+
+function withRouter(Child) {
+  return (props) => {
+    const location = useLocation();
+    const navigate = useNavigate();
+    return <Child {...props} navigate={navigate} location={location} />;
+  };
+}
 
 const api = {
   key: "c53d07090596c4b22fd92015cd6a8ced",
@@ -75,6 +83,7 @@ class About extends React.Component {
     urlSearch.set("city", currentInfo.city);
     urlSearch.set("lat", currentInfo.lat);
     urlSearch.set("lon", currentInfo.lon);
+    console.log(urlSearch.toString());
 
     return (
       <div className="box">
@@ -129,7 +138,7 @@ class About extends React.Component {
         <Link to="/search" className="button">
           Prev
         </Link>
-        <Link to="/details" className="button">
+        <Link to={`/${urlSearch}/details?`} className="button">
           More
         </Link>
       </div>

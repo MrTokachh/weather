@@ -1,12 +1,6 @@
 import "./App.css";
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
-
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Search from "./components/search";
 import About from "./components/about";
 import Details from "./components/details";
@@ -14,24 +8,14 @@ import Details from "./components/details";
 class App extends React.Component {
   render() {
     return (
-      <Router>
-        <div>
-          <Switch>
-            <Route exact path="/">
-              <Redirect to="/search" />
-            </Route>
-            <Route path="/search">
-              <Search />
-            </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/details">
-              <Details />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigate replace to="/search" />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/details" element={<Details />} />
+        </Routes>
+      </BrowserRouter>
     );
   }
 }
