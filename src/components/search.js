@@ -26,8 +26,6 @@ class Search extends React.Component {
         )
           .then((res) => res.json())
           .then(({ data }) => {
-            console.log(data.length);
-
             if (data.length === 0) {
               this.setState({ isError: true });
             } else {
@@ -35,8 +33,9 @@ class Search extends React.Component {
                 city: item.city,
                 lat: item.latitude,
                 lon: item.longitude,
+                country: item.country,
+                region: item.region,
               }));
-
               this.setState({ list: cities, isError: false });
             }
           });
@@ -67,7 +66,9 @@ class Search extends React.Component {
 
                 return (
                   <li key={cityItem.city.toString()}>
-                    <Link to={`/about?${urlSearch}`}>{cityItem.city}</Link>
+                    <Link to={`/about?${urlSearch}`}>
+                      {cityItem.city} {cityItem.country} {cityItem.region}
+                    </Link>
                   </li>
                 );
               })}

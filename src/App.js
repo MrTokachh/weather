@@ -9,6 +9,7 @@ import {
 
 import Search from "./components/search";
 import About from "./components/about";
+import Details from "./components/details";
 
 class App extends React.Component {
   render() {
@@ -24,6 +25,9 @@ class App extends React.Component {
             </Route>
             <Route path="/about">
               <About />
+            </Route>
+            <Route path="/details">
+              <Details />
             </Route>
           </Switch>
         </div>

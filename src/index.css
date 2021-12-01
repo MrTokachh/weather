@@ -82,3 +82,38 @@ input[type="text"] {
   right: 1px;
   border: 1px dotted #212529;
 }
+
+img {
+  max-width: 100%;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px;
+}
+
+.footer > div {
+  padding: 10px;
+  width: 33.33%;
+  display: flex;
+}
+
+.footer img {
+  width: 25px;
+}
+
+.footer-item {
+  width: 100%;
+  border: 2px inset #d5d5d5;
+  color: #424242;
+  background: #fff;
+  box-shadow: -1px -1px 0 0 #828282;
+  text-align: center;
+  padding: 5px;
+}
+
+.footer-desc {
+  font-weight: 400;
+  margin: 0 0 5px;
+}
